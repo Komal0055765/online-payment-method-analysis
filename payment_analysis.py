@@ -1,30 +1,41 @@
+# Online Payment Method Analysis
+
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# payment methods ka data
-pm = ["UPI", "Debit Card", "Credit Card", "Net Banking", "Wallet"]
-tr = [450, 200, 150, 120, 80]
+# STEP 1: Load CSV file
+df = pd.read_csv("digital_payments.csv")
 
-# dataframe banaya
-df = pd.DataFrame()
-df["Payment Method"] = pm
-df["Transactions"] = tr
+print("Dataset Loaded Successfully")
+print(df.head())
 
-# data print kiya
-print(df)
+# STEP 2: Analyze usage of payment methods
+payment_usage = df["payment_type"].value_counts()
 
-# simple statistics
-print("\nStatistics:")
-print(df["Transactions"].describe())
+print("\nPayment Method Usage:")
+print(payment_usage)
 
-# pie chart
-plt.pie(tr, labels=pm, autopct="%1.1f%%")
-plt.title("Online Payment Methods")
-plt.show()
+# STEP 3: Statistical Analysis
+print("\nStatistical Analysis:")
 
-# bar chart
-plt.bar(pm, tr)
+print("Total Transactions:", df["transaction_amount"].count())
+print("Total Amount:", df["transaction_amount"].sum())
+print("Average Transaction Amount:", df["transaction_amount"].mean())
+print("Maximum Transaction Amount:", df["transaction_amount"].max())
+print("Minimum Transaction Amount:", df["transaction_amount"].min())
+
+# STEP 4: Bar Chart
+plt.figure()
+payment_usage.plot(kind="bar")
 plt.xlabel("Payment Method")
-plt.ylabel("Transactions")
-plt.title("Transactions by Payment Method")
+plt.ylabel("Number of Transactions")
+plt.title("Usage of Online Payment Methods")
 plt.show()
+
+# STEP 5: Pie Chart
+plt.figure()
+payment_usage.plot(kind="pie", autopct="%1.1f%%", startangle=90)
+plt.ylabel("")
+plt.title("Distribution of Online Payment Methods")
+plt.show()
+
