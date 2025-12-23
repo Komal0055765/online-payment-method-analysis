@@ -66,5 +66,3 @@ UPI is observed as the most commonly used payment method.
 
 ---
 
-## Author
-Student Project
