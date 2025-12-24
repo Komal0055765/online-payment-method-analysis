@@ -1,10 +1,10 @@
-# Online Payment Method Analysis
+ #Online Payment Method Analysis
 
 import pandas as pd
 import matplotlib.pyplot as plt
 
 # STEP 1: Load CSV file
-df = pd.read_csv("digital_payments.csv")
+df = pd.read_csv("digital_payment.csv")
 
 print("Dataset Loaded Successfully")
 print(df.head())
